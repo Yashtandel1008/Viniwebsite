@@ -72,7 +72,7 @@ const ProjectScroll = () => {
         scrollbarWidth: 'none'
       }}>
         {commercialItems.map((project) => (
-          <Link key={project.id} to={`/gallery/project/${project.id}`} className="project-card">
+          <Link key={project.id} to={`/gallery/${project.id}`} className="project-card">
             <img src={project.thumbnail} alt={project.title} loading="lazy" />
             <div className="card-overlay">
               <p className="card-subtitle">{project.subtitle}</p>
@@ -92,7 +92,7 @@ const ProjectScroll = () => {
         .project-card {
           position: relative;
           flex: 0 0 380px;
-          height: 520px;
+          height: 550px;
           border-radius: 15px;
           overflow: hidden;
           box-shadow: 0 15px 40px rgba(0,0,0,0.06);
@@ -164,12 +164,39 @@ const ProjectScroll = () => {
         }
 
         @media (max-width: 768px) {
-          .projects-section { padding: 80px 0 !important; }
-          .project-card {
-            flex: 0 0 280px;
-            height: 400px;
+          .projects-section { padding: 60px 0 !important; }
+          .projects-scroll-container {
+            display: grid !important;
+            grid-template-columns: repeat(2, 1fr) !important;
+            gap: 12px !important;
+            padding: 0 15px !important;
+            overflow-x: hidden !important;
           }
-          .card-title { font-size: 1.2rem; }
+          .project-card {
+            flex: none !important;
+            width: 100% !important;
+            height: 320px !important;
+            border-radius: 12px !important;
+          }
+          .card-overlay {
+            padding: 25px 15px 15px 15px !important;
+          }
+          .card-title { 
+            font-size: 1.1rem !important; 
+            margin-bottom: 8px !important;
+          }
+          .card-subtitle {
+            font-size: 0.55rem !important;
+            letter-spacing: 0.15em !important;
+            margin-bottom: 4px !important;
+          }
+          .card-cta {
+            font-size: 0.6rem !important;
+          }
+          .stylized-heading {
+            font-size: 1.8rem !important;
+            margin-bottom: 10px !important;
+          }
         }
       `}</style>
     </section>
