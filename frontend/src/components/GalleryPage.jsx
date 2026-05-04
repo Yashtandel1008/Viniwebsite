@@ -188,11 +188,4 @@ const GalleryPage = () => {
   );
 };
 
-        transition: 0.3s ease;
-      }
-      .gallery-img-container:hover .img-overlay { opacity: 1; }
-    `}</style>
-  </div>
-));
-
 export default GalleryPage;
