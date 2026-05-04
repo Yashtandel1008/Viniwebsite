@@ -1,10 +1,9 @@
 export const categories = [
-  { id: 'residential', name: 'Residential Interiors' },
-  { id: 'commercial', name: 'Commercial Spaces' },
   { id: 'living-room', name: 'Living Room' },
   { id: 'kitchen', name: 'Kitchen' },
   { id: 'bedroom', name: 'Bedroom' },
   { id: 'wardrobe', name: 'Wardrobe & Closet' },
+  { id: 'commercial', name: 'Commercial' },
   { id: 'temple', name: 'Temple' },
 ];
 

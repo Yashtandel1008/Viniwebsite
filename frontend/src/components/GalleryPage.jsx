@@ -6,38 +6,15 @@ import Lightbox from './Lightbox';
 
 const GalleryPage = () => {
   const { categoryId } = useParams();
-  
+
   // Memoize search for better performance
   const { category, categoryProjects } = useMemo(() => {
     if (!categoryId) return { category: null, categoryProjects: [] };
-    
-    // Handle specific project view
-    if (categoryId.startsWith('project/')) {
-      const projId = categoryId.replace('project/', '');
-      const proj = projects.find(p => p.id === projId);
-      if (proj) {
-        return { 
-          category: { name: proj.title, id: proj.id }, 
-          categoryProjects: [proj] 
-        };
-      }
-    }
-
-    // Handle Residential group
-    if (categoryId === 'residential') {
-      const residentialProjs = projects.filter(p => p.categoryId !== 'commercial');
-      return { 
-        category: { name: 'Residential Collection', id: 'residential' }, 
-        categoryProjects: residentialProjs 
-      };
-    }
-
-    // Handle normal categories
     const cat = categories.find(c => c.id === categoryId);
     const projs = projects.filter(p => p.categoryId === categoryId);
     return { category: cat, categoryProjects: projs };
   }, [categoryId]);
-  
+
   const [lightboxData, setLightboxData] = useState({ isOpen: false, images: [], index: 0, projectTitle: '' });
 
   useEffect(() => {
@@ -60,12 +37,12 @@ const GalleryPage = () => {
   return (
     <div className="gallery-page" style={{ backgroundColor: '#fff', minHeight: '100vh' }}>
       {/* Fixed Header with Logo & Back Button */}
-      <header className="gallery-header" style={{ 
-        padding: 'var(--header-padding, 12px 5%)', 
-        borderBottom: '1px solid #f0f0f0', 
-        position: 'sticky', 
-        top: 0, 
-        backgroundColor: 'rgba(255, 255, 255, 0.98)', 
+      <header className="gallery-header" style={{
+        padding: 'var(--header-padding, 12px 5%)',
+        borderBottom: '1px solid #f0f0f0',
+        position: 'sticky',
+        top: 0,
+        backgroundColor: 'rgba(255, 255, 255, 0.98)',
         zIndex: 2000,
         display: 'flex',
         alignItems: 'center',
@@ -74,11 +51,11 @@ const GalleryPage = () => {
         transition: 'padding 0.3s ease'
       }}>
         <div style={{ flex: 1, display: 'flex', alignItems: 'center' }}>
-          <Link to="/#projects" style={{ 
-            display: 'flex', 
-            alignItems: 'center', 
+          <Link to="/#projects" style={{
+            display: 'flex',
+            alignItems: 'center',
             gap: '8px',
-            color: 'var(--primary)', 
+            color: 'var(--primary)',
             textDecoration: 'none',
             fontWeight: '600',
             fontSize: '0.85rem',
@@ -89,7 +66,7 @@ const GalleryPage = () => {
             <span className="back-text">Back</span>
           </Link>
         </div>
-        
+
         <div style={{ textAlign: 'center', flex: 2 }}>
           <span style={{ fontSize: '0.8rem', color: 'var(--primary)', textTransform: 'uppercase', letterSpacing: '0.2em', fontWeight: '600' }}>
             {category.name}
@@ -97,10 +74,10 @@ const GalleryPage = () => {
         </div>
 
         <div style={{ flex: 1, textAlign: 'right' }}>
-          <div style={{ 
-            fontFamily: 'var(--font-serif)', 
-            fontSize: 'clamp(0.9rem, 3.5vw, 1.1rem)', 
-            fontWeight: '600', 
+          <div style={{
+            fontFamily: 'var(--font-serif)',
+            fontSize: 'clamp(0.9rem, 3.5vw, 1.1rem)',
+            fontWeight: '600',
             letterSpacing: '0.05em',
             textTransform: 'uppercase'
           }}>
@@ -134,11 +111,11 @@ const GalleryPage = () => {
                   </h3>
                   <div className="images-grid">
                     {section.images.map((img, iIndex) => (
-                      <ImageCard 
-                        key={iIndex} 
-                        src={img} 
-                        alt={`${project.title} ${section.title}`} 
-                        onClick={() => openLightbox(section.images, iIndex, `${project.title} - ${section.title}`)} 
+                      <ImageCard
+                        key={iIndex}
+                        src={img}
+                        alt={`${project.title} ${section.title}`}
+                        onClick={() => openLightbox(section.images, iIndex, `${project.title} - ${section.title}`)}
                       />
                     ))}
                   </div>
@@ -148,11 +125,11 @@ const GalleryPage = () => {
               /* Regular Project Grid */
               <div className="images-grid">
                 {project.images.map((img, iIndex) => (
-                  <ImageCard 
-                    key={iIndex} 
-                    src={img} 
-                    alt={project.title} 
-                    onClick={() => openLightbox(project.images, iIndex, project.title)} 
+                  <ImageCard
+                    key={iIndex}
+                    src={img}
+                    alt={project.title}
+                    onClick={() => openLightbox(project.images, iIndex, project.title)}
                   />
                 ))}
               </div>
@@ -163,11 +140,11 @@ const GalleryPage = () => {
 
       {/* Lightbox Component */}
       {lightboxData.isOpen && (
-        <Lightbox 
-          images={lightboxData.images} 
-          initialIndex={lightboxData.index} 
+        <Lightbox
+          images={lightboxData.images}
+          initialIndex={lightboxData.index}
           projectTitle={lightboxData.projectTitle}
-          onClose={() => setLightboxData({ ...lightboxData, isOpen: false })} 
+          onClose={() => setLightboxData({ ...lightboxData, isOpen: false })}
         />
       )}
 
@@ -207,10 +184,10 @@ const ImageCard = React.memo(({ src, alt, onClick }) => (
     backgroundColor: '#f5f5f5',
     transition: 'var(--transition)'
   }}>
-    <img 
-      src={src} 
-      alt={alt} 
-      style={{ width: '100%', height: '100%', objectFit: 'cover', transition: 'transform 0.8s ease' }} 
+    <img
+      src={src}
+      alt={alt}
+      style={{ width: '100%', height: '100%', objectFit: 'cover', transition: 'transform 0.8s ease' }}
       loading="lazy"
     />
     <div className="img-overlay">

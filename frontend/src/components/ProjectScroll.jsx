@@ -3,114 +3,83 @@ import { Link } from 'react-router-dom';
 import { projects, categories } from '../data/projects';
 
 const ProjectScroll = () => {
-  const residentialProjects = projects.filter(p => p.categoryId !== 'commercial');
-  const commercialProjects = projects.filter(p => p.categoryId === 'commercial');
+  // 1. Residence Section Data (by category)
+  const residenceCategories = categories
+    .filter(cat => cat.id !== 'commercial')
+    .map(cat => {
+      const firstProject = projects.find(p => p.categoryId === cat.id);
+      return {
+        ...cat,
+        thumbnail: firstProject?.thumbnail || '',
+        subtitle: firstProject?.subtitle || 'Residential'
+      };
+    })
+    .filter(cat => cat.thumbnail);
 
-  const scrollItems = [
-    {
-      id: 'residential-group',
-      name: 'Residential Collection',
-      subtitle: 'Homes & Private Spaces',
-      thumbnail: residentialProjects[0]?.thumbnail || '',
-      link: '/gallery/residential',
-      type: 'collection'
-    },
-    ...commercialProjects.map(p => ({
-      id: p.id,
-      name: p.title,
-      subtitle: p.subtitle,
-      thumbnail: p.thumbnail,
-      link: `/gallery/project/${p.id}`,
-      type: 'project'
-    }))
-  ];
+  // 2. Commercial Section Data (individual projects)
+  const commercialItems = projects.filter(p => p.categoryId === 'commercial');
 
   return (
     <section id="projects" className="projects-section" style={{ padding: '120px 0', backgroundColor: 'var(--white)' }}>
-      <div style={{ padding: '0 5%', marginBottom: '60px', textAlign: 'center' }}>
-        <p style={{ fontSize: '0.8rem', letterSpacing: '0.3em', textTransform: 'uppercase', color: 'var(--accent)', marginBottom: '20px', fontWeight: '600' }}>
+      {/* --- RESIDENCE SECTION --- */}
+      <div style={{ padding: '0 5%', marginBottom: '40px' }}>
+        <p style={{ fontSize: '0.8rem', letterSpacing: '0.3em', textTransform: 'uppercase', color: 'var(--accent)', marginBottom: '15px', fontWeight: '600' }}>
           Portfolio
         </p>
-        <h2 className="stylized-heading" style={{ fontSize: 'clamp(2rem, 5vw, 3.5rem)' }}>
-          IMPRESSIONS THAT <br />
-          <em>ENDURE</em>
+        <h2 className="stylized-heading" style={{ fontSize: 'clamp(2rem, 5vw, 3rem)' }}>
+          Residence <span style={{ fontStyle: 'italic', fontWeight: '400' }}>Projects</span>
         </h2>
-        <div style={{ width: '40px', height: '1px', backgroundColor: 'var(--accent)', margin: '30px auto' }}></div>
       </div>
-      
-      <div className="projects-scroll-container" style={{ 
+
+      <div className="projects-scroll-container" style={{
         display: 'flex',
-        gap: '30px', 
+        gap: '25px',
+        padding: '0 5% 80px 5%',
+        overflowX: 'auto',
+        scrollSnapType: 'x mandatory',
+        scrollBehavior: 'smooth',
+        scrollbarWidth: 'none'
+      }}>
+        {residenceCategories.map((cat) => (
+          <Link key={cat.id} to={`/gallery/${cat.id}`} className="project-card">
+            <img src={cat.thumbnail} alt={cat.name} loading="lazy" />
+            <div className="card-overlay">
+              <p className="card-subtitle">{cat.subtitle}</p>
+              <h3 className="card-title">{cat.name}</h3>
+              <div className="card-cta">
+                <span>View Collection</span>
+                <span>→</span>
+              </div>
+            </div>
+          </Link>
+        ))}
+      </div>
+
+      {/* --- COMMERCIAL SECTION --- */}
+      <div style={{ padding: '0 5%', marginBottom: '40px' }}>
+        <h2 className="stylized-heading" style={{ fontSize: 'clamp(2rem, 5vw, 3rem)' }}>
+          Commercial <span style={{ fontStyle: 'italic', fontWeight: '400' }}>Projects</span>
+        </h2>
+      </div>
+
+      <div className="projects-scroll-container" style={{
+        display: 'flex',
+        gap: '25px',
         padding: '0 5% 60px 5%',
         overflowX: 'auto',
         scrollSnapType: 'x mandatory',
         scrollBehavior: 'smooth',
-        WebkitOverflowScrolling: 'touch',
         scrollbarWidth: 'none'
       }}>
-        {scrollItems.map((item, index) => (
-          <Link key={item.id} to={item.link} className="project-card" style={{
-            position: 'relative',
-            flex: '0 0 380px',
-            height: '550px',
-            borderRadius: '12px',
-            overflow: 'hidden',
-            boxShadow: '0 20px 50px rgba(0,0,0,0.06)',
-            transition: 'var(--transition)',
-            textDecoration: 'none',
-            scrollSnapAlign: 'start',
-            backgroundColor: '#1a1a1a'
-          }}>
-            <img 
-              src={item.thumbnail} 
-              alt={item.name} 
-              style={{
-                width: '100%',
-                height: '100%',
-                objectFit: 'cover',
-                opacity: 0.85,
-                transition: 'transform 0.8s ease'
-              }}
-              loading="lazy"
-            />
-            <div style={{
-              position: 'absolute',
-              bottom: 0,
-              left: 0,
-              width: '100%',
-              padding: '60px 25px 30px 25px',
-              background: 'linear-gradient(to top, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.6) 50%, transparent 100%)',
-              color: 'white',
-              display: 'flex',
-              flexDirection: 'column',
-              justifyContent: 'flex-end'
-            }}>
-              <p style={{ 
-                fontSize: '0.7rem', 
-                textTransform: 'uppercase', 
-                letterSpacing: '0.2em', 
-                marginBottom: '8px', 
-                color: 'var(--accent)',
-                fontWeight: '600' 
-              }}>{item.subtitle}</p>
-              <h3 style={{ 
-                fontSize: '1.6rem', 
-                fontWeight: '500', 
-                fontFamily: 'var(--font-serif)', 
-                textTransform: 'uppercase', 
-                marginBottom: '15px',
-                color: '#fff',
-                textShadow: '0 2px 4px rgba(0,0,0,0.3)'
-              }}>{item.name}</h3>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                <span style={{ 
-                  fontSize: '0.75rem', 
-                  fontWeight: '600', 
-                  textTransform: 'uppercase', 
-                  letterSpacing: '0.1em',
-                  color: 'var(--accent)'
-                }}>View Collection</span>
-                <span style={{ fontSize: '1.1rem', color: 'var(--accent)' }}>→</span>
+        {commercialItems.map((project) => (
+          <Link key={project.id} to={`/gallery/project/${project.id}`} className="project-card">
+            <img src={project.thumbnail} alt={project.title} loading="lazy" />
+            <div className="card-overlay">
+              <p className="card-subtitle">{project.subtitle}</p>
+              <h3 className="card-title">{project.title}</h3>
+              <div className="card-cta">
+                <span>Explore Project</span>
+                <span>→</span>
               </div>
             </div>
           </Link>
@@ -119,41 +88,88 @@ const ProjectScroll = () => {
 
       <style>{`
         .projects-scroll-container::-webkit-scrollbar { display: none; }
+        
+        .project-card {
+          position: relative;
+          flex: 0 0 380px;
+          height: 520px;
+          border-radius: 15px;
+          overflow: hidden;
+          box-shadow: 0 15px 40px rgba(0,0,0,0.06);
+          transition: var(--transition);
+          text-decoration: none;
+          scroll-snap-align: start;
+          background-color: #1a1a1a;
+        }
+
+        .project-card img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          opacity: 0.9;
+          transition: transform 0.8s ease;
+        }
+
+        .card-overlay {
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          width: 100%;
+          padding: 50px 25px 30px 25px;
+          background: linear-gradient(to top, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.6) 50%, transparent 100%);
+          color: white;
+          display: flex;
+          flex-direction: column;
+          justify-content: flex-end;
+        }
+
+        .card-subtitle {
+          font-size: 0.7rem;
+          text-transform: uppercase;
+          letter-spacing: 0.25em;
+          margin-bottom: 8px;
+          color: var(--accent);
+          font-weight: 600;
+        }
+
+        .card-title {
+          font-size: 1.6rem;
+          font-weight: 500;
+          font-family: var(--font-serif);
+          text-transform: uppercase;
+          margin-bottom: 15px;
+          color: #fff;
+          text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .card-cta {
+          display: flex;
+          align-items: center;
+          gap: 8px;
+          font-size: 0.75rem;
+          font-weight: 600;
+          text-transform: uppercase;
+          letter-spacing: 0.1em;
+          color: var(--accent);
+        }
+
         .project-card:hover {
           transform: translateY(-10px);
           box-shadow: 0 30px 70px rgba(0,0,0,0.12);
         }
+
         .project-card:hover img {
           transform: scale(1.08);
+          opacity: 1;
         }
+
         @media (max-width: 768px) {
           .projects-section { padding: 80px 0 !important; }
-          .projects-scroll-container {
-            display: grid !important;
-            grid-template-columns: repeat(2, 1fr) !important; // 2 columns as per Image 4
-            gap: 12px !important;
-            padding: 0 15px !important;
-            overflow-x: hidden !important;
-          }
           .project-card {
-            flex: none !important;
-            width: 100% !important;
-            height: 280px !important; // Adjusted height for mobile grid
+            flex: 0 0 280px;
+            height: 400px;
           }
-          .project-card h3 {
-            font-size: 1.1rem !important;
-            margin-bottom: 5px !important;
-          }
-          .project-card p {
-            font-size: 0.6rem !important;
-            margin-bottom: 4px !important;
-          }
-          .project-card span {
-            font-size: 0.65rem !important;
-          }
-          .project-card div {
-            padding: 20px 15px 15px 15px !important;
-          }
+          .card-title { font-size: 1.2rem; }
         }
       `}</style>
     </section>
