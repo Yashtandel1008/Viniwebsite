@@ -19,7 +19,7 @@ const About = () => {
             </p>
             
             <h2 className="stylized-heading" style={{ 
-              fontSize: 'clamp(3rem, 6vw, 5rem)', 
+              fontSize: 'clamp(2.5rem, 6vw, 4rem)', 
               marginBottom: '40px',
               color: 'var(--primary)'
             }}>

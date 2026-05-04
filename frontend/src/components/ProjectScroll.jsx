@@ -3,15 +3,27 @@ import { Link } from 'react-router-dom';
 import { projects, categories } from '../data/projects';
 
 const ProjectScroll = () => {
-  // Get unique categories that have projects
-  const displayCategories = categories.map(cat => {
-    const firstProject = projects.find(p => p.categoryId === cat.id);
-    return {
-      ...cat,
-      thumbnail: firstProject?.thumbnail || '',
-      subtitle: firstProject?.subtitle || 'View Portfolio'
-    };
-  }).filter(cat => cat.thumbnail);
+  const residentialProjects = projects.filter(p => p.categoryId !== 'commercial');
+  const commercialProjects = projects.filter(p => p.categoryId === 'commercial');
+
+  const scrollItems = [
+    {
+      id: 'residential-group',
+      name: 'Residential Collection',
+      subtitle: 'Homes & Private Spaces',
+      thumbnail: residentialProjects[0]?.thumbnail || '',
+      link: '/gallery/residential',
+      type: 'collection'
+    },
+    ...commercialProjects.map(p => ({
+      id: p.id,
+      name: p.title,
+      subtitle: p.subtitle,
+      thumbnail: p.thumbnail,
+      link: `/gallery/project/${p.id}`,
+      type: 'project'
+    }))
+  ];
 
   return (
     <section id="projects" className="projects-section" style={{ padding: '120px 0', backgroundColor: 'var(--white)' }}>
@@ -19,7 +31,7 @@ const ProjectScroll = () => {
         <p style={{ fontSize: '0.8rem', letterSpacing: '0.3em', textTransform: 'uppercase', color: 'var(--accent)', marginBottom: '20px', fontWeight: '600' }}>
           Portfolio
         </p>
-        <h2 className="stylized-heading" style={{ fontSize: 'clamp(2.5rem, 6vw, 4rem)' }}>
+        <h2 className="stylized-heading" style={{ fontSize: 'clamp(2rem, 5vw, 3.5rem)' }}>
           IMPRESSIONS THAT <br />
           <em>ENDURE</em>
         </h2>
@@ -36,26 +48,27 @@ const ProjectScroll = () => {
         WebkitOverflowScrolling: 'touch',
         scrollbarWidth: 'none'
       }}>
-        {displayCategories.map((cat, index) => (
-          <Link key={cat.id} to={`/gallery/${cat.id}`} className="project-card" style={{
+        {scrollItems.map((item, index) => (
+          <Link key={item.id} to={item.link} className="project-card" style={{
             position: 'relative',
-            flex: '0 0 380px', // Reduced from 450px as per Image 2 feedback
-            height: '550px', // Slightly reduced height to match
+            flex: '0 0 380px',
+            height: '550px',
             borderRadius: '12px',
             overflow: 'hidden',
             boxShadow: '0 20px 50px rgba(0,0,0,0.06)',
             transition: 'var(--transition)',
             textDecoration: 'none',
             scrollSnapAlign: 'start',
-            backgroundColor: '#f9f9f9'
+            backgroundColor: '#1a1a1a'
           }}>
             <img 
-              src={cat.thumbnail} 
-              alt={cat.name} 
+              src={item.thumbnail} 
+              alt={item.name} 
               style={{
                 width: '100%',
                 height: '100%',
                 objectFit: 'cover',
+                opacity: 0.85,
                 transition: 'transform 0.8s ease'
               }}
               loading="lazy"
@@ -66,17 +79,38 @@ const ProjectScroll = () => {
               left: 0,
               width: '100%',
               padding: '60px 25px 30px 25px',
-              background: 'linear-gradient(to top, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.7) 40%, rgba(0,0,0,0.2) 70%, transparent 100%)',
+              background: 'linear-gradient(to top, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.6) 50%, transparent 100%)',
               color: 'white',
               display: 'flex',
               flexDirection: 'column',
               justifyContent: 'flex-end'
             }}>
-              <p style={{ fontSize: '0.7rem', textTransform: 'uppercase', letterSpacing: '0.2em', marginBottom: '8px', opacity: 0.8 }}>{cat.subtitle}</p>
-              <h3 style={{ fontSize: '1.6rem', fontWeight: '500', fontFamily: 'var(--font-serif)', textTransform: 'uppercase', marginBottom: '12px' }}>{cat.name}</h3>
+              <p style={{ 
+                fontSize: '0.7rem', 
+                textTransform: 'uppercase', 
+                letterSpacing: '0.2em', 
+                marginBottom: '8px', 
+                color: 'var(--accent)',
+                fontWeight: '600' 
+              }}>{item.subtitle}</p>
+              <h3 style={{ 
+                fontSize: '1.6rem', 
+                fontWeight: '500', 
+                fontFamily: 'var(--font-serif)', 
+                textTransform: 'uppercase', 
+                marginBottom: '15px',
+                color: '#fff',
+                textShadow: '0 2px 4px rgba(0,0,0,0.3)'
+              }}>{item.name}</h3>
               <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                <span style={{ fontSize: '0.75rem', fontWeight: '600', textTransform: 'uppercase', letterSpacing: '0.1em' }}>View Collection</span>
-                <span style={{ fontSize: '1.1rem' }}>→</span>
+                <span style={{ 
+                  fontSize: '0.75rem', 
+                  fontWeight: '600', 
+                  textTransform: 'uppercase', 
+                  letterSpacing: '0.1em',
+                  color: 'var(--accent)'
+                }}>View Collection</span>
+                <span style={{ fontSize: '1.1rem', color: 'var(--accent)' }}>→</span>
               </div>
             </div>
           </Link>

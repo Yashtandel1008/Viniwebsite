@@ -10,6 +10,29 @@ const GalleryPage = () => {
   // Memoize search for better performance
   const { category, categoryProjects } = useMemo(() => {
     if (!categoryId) return { category: null, categoryProjects: [] };
+    
+    // Handle specific project view
+    if (categoryId.startsWith('project/')) {
+      const projId = categoryId.replace('project/', '');
+      const proj = projects.find(p => p.id === projId);
+      if (proj) {
+        return { 
+          category: { name: proj.title, id: proj.id }, 
+          categoryProjects: [proj] 
+        };
+      }
+    }
+
+    // Handle Residential group
+    if (categoryId === 'residential') {
+      const residentialProjs = projects.filter(p => p.categoryId !== 'commercial');
+      return { 
+        category: { name: 'Residential Collection', id: 'residential' }, 
+        categoryProjects: residentialProjs 
+      };
+    }
+
+    // Handle normal categories
     const cat = categories.find(c => c.id === categoryId);
     const projs = projects.filter(p => p.categoryId === categoryId);
     return { category: cat, categoryProjects: projs };

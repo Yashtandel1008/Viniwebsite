@@ -34,16 +34,15 @@ const Navbar = () => {
       backdropFilter: scrolled || !isHomePage ? 'blur(20px)' : 'none',
       boxShadow: scrolled || !isHomePage ? '0 5px 30px rgba(0,0,0,0.03)' : 'none'
     }}>
-      <Link to="/" style={{ 
-        fontFamily: 'var(--font-heading)', 
-        fontSize: '1.6rem', 
-        fontWeight: '600', 
-        letterSpacing: '0.05em',
+      <Link to="/" className="luxury-text" style={{ 
+        fontSize: '1.8rem', 
+        fontWeight: '400', 
+        letterSpacing: '0.1em',
         color: navColor,
         textDecoration: 'none',
         textTransform: 'uppercase'
       }}>
-        VINI'S <span style={{ fontWeight: '400', fontStyle: 'italic', color: 'var(--accent)' }}>STUDIO</span>
+        VINI'S <span style={{ color: 'var(--accent)', fontWeight: '400' }}>STUDIO</span>
       </Link>
       
       <div style={{ display: 'flex', gap: '35px', alignItems: 'center' }} className="nav-links">
