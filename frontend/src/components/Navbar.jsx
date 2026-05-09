@@ -7,13 +7,13 @@ const Navbar = () => {
   const isHomePage = location.pathname === '/';
   const isGalleryPage = location.pathname.startsWith('/gallery');
 
-  if (isGalleryPage) return null;
-
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 50);
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  if (isGalleryPage) return null;
 
   const navColor = scrolled || !isHomePage ? 'var(--primary)' : 'white';
   const bgColor = scrolled || !isHomePage ? 'rgba(255, 255, 255, 0.95)' : 'transparent';
@@ -34,15 +34,16 @@ const Navbar = () => {
       backdropFilter: scrolled || !isHomePage ? 'blur(20px)' : 'none',
       boxShadow: scrolled || !isHomePage ? '0 5px 30px rgba(0,0,0,0.03)' : 'none'
     }}>
-      <Link to="/" className="luxury-text" style={{ 
+      <Link to="/" style={{ 
         fontSize: '1.8rem', 
-        fontWeight: '400', 
-        letterSpacing: '0.1em',
+        fontWeight: '500', 
+        letterSpacing: '0.05em',
         color: navColor,
         textDecoration: 'none',
-        textTransform: 'uppercase'
+        textTransform: 'uppercase',
+        fontFamily: "'Playfair Display', serif"
       }}>
-        VINI'S <span style={{ color: 'var(--accent)', fontWeight: '400' }}>STUDIO</span>
+        VINI'S <span style={{ color: 'var(--accent)', fontStyle: 'italic', fontWeight: '400' }}>STUDIO</span>
       </Link>
       
       <div style={{ display: 'flex', gap: '35px', alignItems: 'center' }} className="nav-links">

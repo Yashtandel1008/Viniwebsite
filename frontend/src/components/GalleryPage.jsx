@@ -95,27 +95,24 @@ const GalleryPage = () => {
         alignItems: 'center',
         justifyContent: 'space-between'
       }}>
-        <Link to="/" style={{ display: 'flex', alignItems: 'center', gap: '8px', color: 'var(--primary)', fontWeight: '600' }}>
-          <ArrowLeft size={18} />
-          <span>Back</span>
+        <Link to="/#projects" style={{ display: 'flex', alignItems: 'center', color: 'var(--primary)', padding: '10px' }} aria-label="Go Back">
+          <ArrowLeft size={24} />
         </Link>
         <span style={{ fontSize: '0.8rem', textTransform: 'uppercase', letterSpacing: '0.2em', fontWeight: '700' }}>
           {category.name}
         </span>
-        <div style={{ fontFamily: 'var(--font-serif)', fontSize: '1rem', fontWeight: '600' }}>
-          VINI'S <span style={{ color: 'var(--accent)', fontStyle: 'italic' }}>STUDIO</span>
-        </div>
+        <div style={{ width: '60px' }}></div> {/* Empty div to maintain spacing balance */}
       </header>
 
       {/* Content */}
-      <main style={{ maxWidth: '1400px', margin: '0 auto', padding: '60px 5%' }}>
+      <main style={{ maxWidth: '1400px', margin: '0 auto', padding: '30px 5%' }}>
         {categoryProjects.map((project) => (
           <section key={project.id} style={{ marginBottom: '80px' }}>
             <div style={{ marginBottom: '40px' }}>
               <p style={{ color: 'var(--accent)', fontSize: '0.7rem', letterSpacing: '0.3em', textTransform: 'uppercase', marginBottom: '10px', fontWeight: '700' }}>
                 {project.subtitle}
               </p>
-              <h2 className="stylized-heading" style={{ fontSize: 'clamp(2rem, 5vw, 3rem)', marginBottom: '15px' }}>
+              <h2 className="stylized-heading" style={{ fontSize: '2.2rem', marginBottom: '15px' }}>
                 {project.title}
               </h2>
               <p style={{ color: '#666', lineHeight: '1.6', maxWidth: '800px' }}>
@@ -169,7 +166,7 @@ const GalleryPage = () => {
       <style>{`
         .images-grid {
           display: grid;
-          grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+          grid-template-columns: repeat(4, 1fr);
           gap: 20px;
         }
         .img-overlay {

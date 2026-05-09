@@ -74,16 +74,16 @@ const Testimonials = () => {
   }, [isMobile]);
 
   return (
-    <section id="testimonials" className="testimonials-section" style={{ padding: '120px 0', backgroundColor: 'var(--secondary)', overflow: 'hidden' }}>
-      <div style={{ textAlign: 'center', marginBottom: '80px', padding: '0 20px' }} className="reveal">
-        <p style={{ fontSize: '0.8rem', letterSpacing: '0.3em', textTransform: 'uppercase', color: 'var(--accent)', marginBottom: '20px', fontWeight: '600' }}>
+    <section id="testimonials" className="testimonials-section" style={{ padding: '60px 0', backgroundColor: 'var(--secondary)', overflow: 'hidden' }}>
+      <div style={{ textAlign: 'center', marginBottom: '50px', padding: '0 20px' }} className="reveal">
+        <p style={{ fontSize: '0.8rem', letterSpacing: '0.3em', textTransform: 'uppercase', color: 'var(--accent)', marginBottom: '15px', fontWeight: '600' }}>
           Testimonials
         </p>
-        <h2 className="stylized-heading" style={{ fontSize: 'clamp(2.5rem, 6vw, 4.5rem)' }}>
+        <h2 className="stylized-heading" style={{ fontSize: '3rem' }}>
           CLIENT <br />
           <em>STORIES</em>
         </h2>
-        <div style={{ width: '40px', height: '1px', backgroundColor: 'var(--accent)', margin: '30px auto' }}></div>
+        <div style={{ width: '40px', height: '1px', backgroundColor: 'var(--accent)', margin: '20px auto' }}></div>
       </div>
       
       <div className="reveal" style={{ animationDelay: '0.3s' }}>

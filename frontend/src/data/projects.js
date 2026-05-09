@@ -218,7 +218,7 @@ export const projects = [
     title: 'Luxury Shoe Shop',
     subtitle: 'Retail Design',
     description: 'Modern retail interior with custom shelving and lighting solutions.',
-    thumbnail: '/assets/Shoe Shop/WhatsApp Image 2026-05-01 at 22.48.54 (4).jpeg',
+    thumbnail: '/assets/Shoe Shop/WhatsApp Image 2026-05-01 at 22.48.54 (2).jpeg',
     images: [
       '/assets/Shoe Shop/WhatsApp Image 2026-05-01 at 22.48.54 (4).jpeg',
       '/assets/Shoe Shop/WhatsApp Image 2026-05-01 at 22.48.54 (3).jpeg',

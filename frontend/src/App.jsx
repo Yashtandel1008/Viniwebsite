@@ -70,7 +70,7 @@ function App() {
         
         <FloatingButtons />
 
-        <footer style={{ padding: '100px 5% 60px 5%', backgroundColor: 'var(--primary)', color: 'white' }}>
+        <footer style={{ padding: '60px 5% 40px 5%', backgroundColor: 'var(--primary)', color: 'white' }}>
           <div style={{ maxWidth: '1400px', margin: '0 auto', display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center' }}>
             <div style={{ 
               fontFamily: 'var(--font-heading)', 

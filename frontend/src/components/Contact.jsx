@@ -32,7 +32,7 @@ const Contact = () => {
         
         {/* Info */}
         <div className="reveal">
-          <h2 style={{ fontSize: '3rem', marginBottom: '20px', fontFamily: 'var(--font-heading)' }}>Let's Create Your Dream Space</h2>
+          <h2 className="stylized-heading" style={{ fontSize: '3rem', marginBottom: '20px' }}>Let's Create Your <br /> <em>Dream Space</em></h2>
           <p style={{ color: 'var(--text-muted)', marginBottom: '40px', fontSize: '1.1rem' }}>
             Ready to transform your home or office? Contact us for a free consultation and let's bring your vision to life.
           </p>

@@ -2,9 +2,9 @@ import React from 'react';
 
 const About = () => {
   return (
-    <section className="about-section" style={{ padding: '120px 5%', backgroundColor: 'var(--white)' }}>
+    <section className="about-section" style={{ padding: '60px 5%', backgroundColor: 'var(--white)' }}>
       <div style={{ maxWidth: '1400px', margin: '0 auto' }}>
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '100px', alignItems: 'center' }} className="about-grid">
+        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '60px', alignItems: 'center' }} className="about-grid">
           
           <div className="about-text-content reveal">
             <p style={{ 
@@ -12,16 +12,17 @@ const About = () => {
               letterSpacing: '0.3em', 
               textTransform: 'uppercase', 
               color: 'var(--accent)',
-              marginBottom: '30px',
+              marginBottom: '20px',
               fontWeight: '600'
             }}>
               The Studio
             </p>
             
             <h2 className="stylized-heading" style={{ 
-              fontSize: 'clamp(2.5rem, 6vw, 4rem)', 
-              marginBottom: '40px',
-              color: 'var(--primary)'
+              fontSize: '3rem', 
+              marginBottom: '20px',
+              color: 'var(--primary)',
+              lineHeight: '1.1'
             }}>
               DESIGN WITH <br />
               <em>INTENTION</em>
@@ -39,7 +40,7 @@ const About = () => {
                 project as a layered composition of light, form, and purpose.
               </p>
 
-              <div style={{ display: 'flex', gap: '60px', marginBottom: '50px', borderTop: '1px solid #eee', paddingTop: '40px' }}>
+              <div style={{ display: 'flex', gap: '60px', marginBottom: '30px', borderTop: '1px solid #eee', paddingTop: '30px' }}>
                 <div>
                   <h3 style={{ fontSize: '2.5rem', fontWeight: '500', marginBottom: '5px' }}>4+</h3>
                   <p style={{ fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '0.15em', color: 'var(--text-muted)' }}>Years of Experience</p>
@@ -77,7 +78,7 @@ const About = () => {
               transition: 'transform 0.8s ease'
             }} className="main-img">
               <img 
-                src="/assets/Shoe Shop/WhatsApp Image 2026-05-01 at 22.48.52.jpeg" 
+                src="/assets/Shoe Shop/WhatsApp Image 2026-05-01 at 22.48.54 (2).jpeg'" 
                 alt="Main Portfolio" 
                 style={{ width: '100%', height: '650px', objectFit: 'cover' }}
                 loading="lazy"

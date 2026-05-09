@@ -27,11 +27,12 @@ const Hero = () => {
         <img 
           src="/assets/Living room with Kitchen/WhatsApp Image 2026-05-01 at 22.58.07.jpeg" 
           alt="Luxury Interior" 
+          className="hero-img-animate"
           style={{
             width: '100%',
             height: '100%',
             objectFit: 'cover',
-            filter: 'brightness(0.5) contrast(1.05)'
+            filter: 'brightness(0.4) contrast(1.1)'
           }}
           loading="eager"
         />
@@ -70,8 +71,8 @@ const Hero = () => {
         </div>
 
         <h1 className="stylized-heading animate-up" style={{ 
-          fontSize: 'clamp(3rem, 11vw, 8rem)', 
-          lineHeight: '1.1',
+          fontSize: 'clamp(3rem, 8vw, 5rem)', 
+          lineHeight: '1.2',
           animationDelay: '0.4s',
           marginBottom: '30px'
         }}>
@@ -140,13 +141,44 @@ const Hero = () => {
           50% { height: 50px; opacity: 1; }
           100% { height: 0; opacity: 0; transform: translateY(50px); }
         }
+        @keyframes heroZoom {
+          from { transform: scale(1.1); }
+          to { transform: scale(1); }
+        }
+        @keyframes float {
+          0%, 100% { transform: translateY(0); }
+          50% { transform: translateY(-10px); }
+        }
+        .hero-img-animate {
+          animation: heroZoom 10s ease-out forwards;
+        }
+        .hero-content {
+          animation: float 6s ease-in-out infinite;
+        }
         .hero-btn:hover {
           background-color: white;
           color: black;
           border-color: white;
+          transform: translateY(-5px);
+          box-shadow: 0 10px 20px rgba(0,0,0,0.2);
         }
         @media (max-width: 768px) {
           .hero { padding: 120px 0 80px 0 !important; }
+          .hero-content { animation: none; }
+          .hero-content div:first-child p {
+            margin-bottom: 24px !important;
+          }
+          .stylized-heading { 
+            font-size: 5rem !important; 
+            margin-bottom: 36px !important; 
+            line-height: 1.2 !important;
+            letter-spacing: 0.02em !important;
+          }
+          .hero-content p {
+            line-height: 1.8 !important;
+            margin-bottom: 48px !important;
+            padding: 0 10px;
+          }
         }
       `}</style>
     </section>

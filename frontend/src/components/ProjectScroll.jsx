@@ -20,13 +20,13 @@ const ProjectScroll = () => {
   const commercialItems = projects.filter(p => p.categoryId === 'commercial');
 
   return (
-    <section id="projects" className="projects-section" style={{ padding: '120px 0', backgroundColor: 'var(--white)' }}>
+    <section id="projects" className="projects-section" style={{ padding: '60px 0', backgroundColor: 'var(--white)' }}>
       {/* --- RESIDENCE SECTION --- */}
-      <div style={{ padding: '0 5%', marginBottom: '40px' }}>
-        <p style={{ fontSize: '0.8rem', letterSpacing: '0.3em', textTransform: 'uppercase', color: 'var(--accent)', marginBottom: '15px', fontWeight: '600' }}>
+      <div style={{ padding: '0 5%', marginBottom: '30px' }}>
+        <p style={{ fontSize: '0.8rem', letterSpacing: '0.3em', textTransform: 'uppercase', color: 'var(--accent)', marginBottom: '10px', fontWeight: '600' }}>
           Portfolio
         </p>
-        <h2 className="stylized-heading" style={{ fontSize: 'clamp(2rem, 5vw, 3rem)' }}>
+        <h2 className="stylized-heading" style={{ fontSize: '3rem' }}>
           Residence <span style={{ fontStyle: 'italic', fontWeight: '400' }}>Projects</span>
         </h2>
       </div>
@@ -56,8 +56,8 @@ const ProjectScroll = () => {
       </div>
 
       {/* --- COMMERCIAL SECTION --- */}
-      <div style={{ padding: '0 5%', marginBottom: '40px' }}>
-        <h2 className="stylized-heading" style={{ fontSize: 'clamp(2rem, 5vw, 3rem)' }}>
+      <div style={{ padding: '0 5%', marginBottom: '30px', marginTop: '20px' }}>
+        <h2 className="stylized-heading" style={{ fontSize: '3rem' }}>
           Commercial <span style={{ fontStyle: 'italic', fontWeight: '400' }}>Projects</span>
         </h2>
       </div>
@@ -91,9 +91,9 @@ const ProjectScroll = () => {
         
         .project-card {
           position: relative;
-          flex: 0 0 380px;
-          height: 550px;
-          border-radius: 15px;
+          flex: 0 0 280px;
+          height: 400px;
+          border-radius: 12px;
           overflow: hidden;
           box-shadow: 0 15px 40px rgba(0,0,0,0.06);
           transition: var(--transition);
@@ -115,7 +115,7 @@ const ProjectScroll = () => {
           bottom: 0;
           left: 0;
           width: 100%;
-          padding: 50px 25px 30px 25px;
+          padding: 30px 20px 20px 20px;
           background: linear-gradient(to top, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.6) 50%, transparent 100%);
           color: white;
           display: flex;
@@ -124,20 +124,20 @@ const ProjectScroll = () => {
         }
 
         .card-subtitle {
-          font-size: 0.7rem;
+          font-size: 0.65rem;
           text-transform: uppercase;
-          letter-spacing: 0.25em;
-          margin-bottom: 8px;
+          letter-spacing: 0.2em;
+          margin-bottom: 5px;
           color: var(--accent);
           font-weight: 600;
         }
 
         .card-title {
-          font-size: 1.6rem;
+          font-size: 1.3rem;
           font-weight: 500;
           font-family: var(--font-serif);
           text-transform: uppercase;
-          margin-bottom: 15px;
+          margin-bottom: 10px;
           color: #fff;
           text-shadow: 0 2px 4px rgba(0,0,0,0.3);
         }

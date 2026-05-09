@@ -48,11 +48,6 @@ const FloatingButtons = () => {
         .fab-btn:hover {
           transform: translateY(-5px) scale(1.05);
         }
-        @media (min-width: 769px) {
-          .floating-buttons {
-            display: none;
-          }
-        }
       `}</style>
     </div>
   );
