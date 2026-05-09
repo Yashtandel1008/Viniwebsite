@@ -63,7 +63,7 @@ const About = () => {
               transition: 'transform 0.8s ease'
             }} className="main-img">
               <img 
-                src="/assets/Living room with Kitchen/WhatsApp Image 2026-05-01 at 22.58.07.jpeg" 
+                src="/assets/TOILET AND WALK IN WADROBE/WhatsApp Image 2026-05-01 at 22.50.12.jpeg" 
                 alt="Main Portfolio" 
                 style={{ width: '100%', height: '650px', objectFit: 'cover' }}
                 loading="lazy"
@@ -78,7 +78,7 @@ const About = () => {
               transition: 'transform 1.2s ease'
             }} className="side-img">
               <img 
-                src="/assets/TOILET AND WALK IN WADROBE/WhatsApp Image 2026-05-01 at 22.50.12.jpeg" 
+                src="/assets/Living room with Kitchen/WhatsApp Image 2026-05-01 at 22.58.07 (2).jpeg" 
                 alt="Detail View" 
                 style={{ width: '100%', height: '400px', objectFit: 'cover' }}
                 loading="lazy"
