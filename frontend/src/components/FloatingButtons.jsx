@@ -14,8 +14,8 @@ const FloatingButtons = () => {
     }}>
       {/* Phone Button */}
       <a href="tel:+919687206812" style={{
-        width: '60px',
-        height: '60px',
+        width: '40px',
+        height: '40px',
         backgroundColor: 'var(--primary)',
         color: 'white',
         borderRadius: '50%',
@@ -30,8 +30,8 @@ const FloatingButtons = () => {
 
       {/* WhatsApp Button */}
       <a href="https://wa.me/919687206812" target="_blank" rel="noopener noreferrer" style={{
-        width: '60px',
-        height: '60px',
+        width: '40px',
+        height: '40px',
         backgroundColor: '#25D366',
         color: 'white',
         borderRadius: '50%',
