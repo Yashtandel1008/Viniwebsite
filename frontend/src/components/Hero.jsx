@@ -94,7 +94,30 @@ const Hero = () => {
           </p>
         </div>
 
-        <div className="animate-up" style={{ animationDelay: '0.8s' }}>
+        <div className="animate-up" style={{ 
+          animationDelay: '0.8s',
+          display: 'flex',
+          gap: '20px',
+          flexWrap: 'wrap',
+          justifyContent: 'center'
+        }}>
+          <a href="#projects" style={{
+            fontSize: '0.85rem',
+            textTransform: 'uppercase',
+            letterSpacing: '0.2em',
+            padding: '14px 35px',
+            border: '1px solid rgba(255,255,255,0.8)',
+            color: 'white',
+            borderRadius: '50px',
+            display: 'inline-flex',
+            alignItems: 'center',
+            gap: '12px',
+            fontWeight: '600',
+            transition: 'var(--transition)'
+          }} className="hero-btn projects-btn">
+            VIEW PROJECTS
+          </a>
+
           <a href="#contact" style={{
             fontSize: '0.85rem',
             textTransform: 'uppercase',
@@ -107,7 +130,8 @@ const Hero = () => {
             gap: '12px',
             fontWeight: '500',
             backdropFilter: 'blur(5px)',
-            transition: 'var(--transition)'
+            transition: 'var(--transition)',
+            color: 'rgba(255,255,255,0.8)'
           }} className="hero-btn">
             GET IN TOUCH 
             <span style={{ fontSize: '1.1rem' }}>→</span>
@@ -161,6 +185,9 @@ const Hero = () => {
           border-color: white;
           transform: translateY(-5px);
           box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+        .hero-btn.projects-btn {
+          background-color: rgba(255,255,255,0.05);
         }
         @media (max-width: 768px) {
           .hero { padding: 120px 0 80px 0 !important; }
