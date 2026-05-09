@@ -63,7 +63,7 @@ const About = () => {
               transition: 'transform 0.8s ease'
             }} className="main-img">
               <img 
-                src="/assets/Clothshop2/WhatsApp Image 2026-05-01 at 23.06.23 (3).jpeg" 
+                src="/assets/Clothshop/WhatsApp Image 2026-05-01 at 23.04.53.jpeg" 
                 alt="Main Portfolio" 
                 style={{ width: '100%', height: '650px', objectFit: 'cover' }}
                 loading="lazy"
