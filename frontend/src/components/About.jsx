@@ -46,7 +46,7 @@ const About = () => {
                   <p style={{ fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '0.15em', color: 'var(--text-muted)' }}>Years of Experience</p>
                 </div>
                 <div>
-                  <h3 style={{ fontSize: '2.5rem', fontWeight: '500', marginBottom: '5px' }}>60+</h3>
+                  <h3 style={{ fontSize: '2.5rem', fontWeight: '500', marginBottom: '5px' }}>34+</h3>
                   <p style={{ fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '0.15em', color: 'var(--text-muted)' }}>Projects Completed</p>
                 </div>
               </div>

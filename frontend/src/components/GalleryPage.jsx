@@ -78,7 +78,28 @@ const GalleryPage = () => {
 
   const openLightbox = (images, index, title) => {
     setLightboxData({ isOpen: true, images, index, projectTitle: title });
+    // Push a state to history so back button closes lightbox
+    window.history.pushState({ lightboxOpen: true }, '');
   };
+
+  const closeLightbox = () => {
+    setLightboxData(prev => ({ ...prev, isOpen: false }));
+    // If the top state is ours, go back to clean history
+    if (window.history.state && window.history.state.lightboxOpen) {
+      window.history.back();
+    }
+  };
+
+  useEffect(() => {
+    const handlePopState = (e) => {
+      if (lightboxData.isOpen) {
+        setLightboxData(prev => ({ ...prev, isOpen: false }));
+      }
+    };
+
+    window.addEventListener('popstate', handlePopState);
+    return () => window.removeEventListener('popstate', handlePopState);
+  }, [lightboxData.isOpen]);
 
   return (
     <div className="gallery-page" style={{ backgroundColor: '#fff', minHeight: '100vh' }}>
@@ -158,7 +179,7 @@ const GalleryPage = () => {
         <Lightbox
           images={lightboxData.images}
           initialIndex={lightboxData.index}
-          onClose={() => setLightboxData({ ...lightboxData, isOpen: false })}
+          onClose={closeLightbox}
           projectTitle={lightboxData.projectTitle}
         />
       )}
