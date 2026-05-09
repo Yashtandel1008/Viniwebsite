@@ -51,21 +51,6 @@ const About = () => {
                 </div>
               </div>
 
-              <a href="#contact" style={{
-                fontSize: '0.85rem',
-                textTransform: 'uppercase',
-                letterSpacing: '0.2em',
-                fontWeight: '700',
-                display: 'inline-flex',
-                alignItems: 'center',
-                gap: '15px',
-                color: 'var(--primary)',
-                borderBottom: '1px solid var(--primary)',
-                paddingBottom: '8px',
-                transition: 'var(--transition)'
-              }} className="learn-more-btn">
-                EXPLORE OUR PROCESS <span style={{ fontSize: '1.2rem' }}>→</span>
-              </a>
             </div>
           </div>
 
@@ -78,7 +63,7 @@ const About = () => {
               transition: 'transform 0.8s ease'
             }} className="main-img">
               <img 
-                src="/assets/Shoe Shop/WhatsApp Image 2026-05-01 at 22.48.54 (2).jpeg'" 
+                src="/assets/Living room with Kitchen/WhatsApp Image 2026-05-01 at 22.58.07.jpeg" 
                 alt="Main Portfolio" 
                 style={{ width: '100%', height: '650px', objectFit: 'cover' }}
                 loading="lazy"
