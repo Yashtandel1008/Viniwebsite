@@ -10,7 +10,7 @@ const testimonials = [
   {
     name: 'Smitaben Shah',
     role: 'Master Bedroom',
-    content: 'Studio Vini transformed our master bedroom into a luxury hotel suite. Their precision and attention to detail is remarkable.',
+    content: 'We are extremely happy with the final outcome. The house feels elegant, spacious, and exactly the way we imagined. Every detail was thoughtfully designed.',
   },
   {
     name: 'Hardikbhai Mehta',
@@ -24,13 +24,8 @@ const testimonials = [
   },
   {
     name: 'Vipulbhai Desai',
-    role: 'Kitchen Renovation',
-    content: 'The fittings and material quality in our modular kitchen are top-notch. Thank you for completing the work right on time.',
-  },
-  {
-    name: 'Rekhaben Mistry',
-    role: 'Kitchen Interior',
-    content: 'The storage solutions are so smartly designed. Our kitchen stays clean and organized effortlessly.',
+    role: 'Cloth Store',
+    content: 'Vini’s Studio completely elevated the look of our store. Customers immediately notice the premium and welcoming atmosphere.',
   },
   {
     name: 'Ketanbhai Gandhi',
@@ -40,7 +35,7 @@ const testimonials = [
   {
     name: 'Manishaben Solanki',
     role: 'Retail Showroom',
-    content: 'The lighting and display areas in our showroom are so well done that we have seen a significant increase in customer footfall.',
+    content: 'The layout, lighting, and display planning were done brilliantly by Vini’s Studio. The interiors genuinely improved the customer experience.',
   },
   {
     name: 'Jayeshbhai Ahir',
